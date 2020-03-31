@@ -18,8 +18,13 @@
   },
   "homepage": "https://github.com/jemimaabu/accessible-react#readme",
   "dependencies": {
+    "@emotion/core": "^10.0.28",
+    "@types/react-router-dom": "^5.1.3",
+    "@types/styled-components": "^5.0.1",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.1.2",
+    "styled-components": "^5.0.1"
   },
   "devDependencies": {
     "@types/html-webpack-plugin": "^3.2.2",

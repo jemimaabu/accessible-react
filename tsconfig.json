@@ -6,6 +6,8 @@
     "lib": ["es5", "es6", "dom"],
     "jsx": "react",
     "allowJs": true,
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "esModuleInterop": true
   }
 }
