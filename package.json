@@ -1,0 +1,37 @@
+{
+  "name": "accessible-react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --open --config webpack.dev.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jemimaabu/accessible-react.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jemimaabu/accessible-react/issues"
+  },
+  "homepage": "https://github.com/jemimaabu/accessible-react#readme",
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "@types/html-webpack-plugin": "^3.2.2",
+    "@types/react": "^16.9.29",
+    "@types/react-dom": "^16.9.5",
+    "@types/webpack": "^4.41.10",
+    "awesome-typescript-loader": "^5.2.1",
+    "html-webpack-plugin": "^4.0.3",
+    "ts-node": "^8.8.1",
+    "typescript": "^3.8.3",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
+  }
+}
