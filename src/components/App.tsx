@@ -1,7 +1,7 @@
 /** @jsx jsx */
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink, BrowserRouter as Router, Route } from "react-router-dom";
-import { SelectContainer, Sidebar, Table } from "../components";
+import { SelectContainer, ButtonContainer, Table } from "../components";
 import styled, { createGlobalStyle } from "styled-components";
 import { css, jsx } from "@emotion/core";
 import { colors, spacing } from "../styles";
@@ -50,25 +50,28 @@ const StyledMain = styled.main`
 `;
 
 export const App: React.FC = () => {
+  useEffect(() => {
+    document.title = "Accessible React";
+  });
   return (
     <div css={styles.appPage}>
       <GlobalStyle />
       <h1>Accessible React</h1>
       <Router>
         <StyledNav>
+          <NavLink to="/button" activeClassName="active">
+            Button
+          </NavLink>
           <NavLink to="/select" activeClassName="active">
             Select
-          </NavLink>
-          <NavLink to="/sidebar" activeClassName="active">
-            Sidebar
           </NavLink>
           <NavLink to="/table" activeClassName="active">
             Table
           </NavLink>
         </StyledNav>
         <StyledMain>
+          <Route path="/button" component={ButtonContainer} />
           <Route path="/select" component={SelectContainer} />
-          <Route path="/sidebar" component={Sidebar} />
           <Route path="/table" component={Table} />
         </StyledMain>
       </Router>

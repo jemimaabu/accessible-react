@@ -10,7 +10,7 @@ interface SelectProps {
   placeholder?: string;
 }
 
-export const Select = (props: SelectProps) => {
+export const SelectComponent = (props: SelectProps) => {
   const { value, options, placeholder, onChange } = props;
 
   const [isActive, toggle] = useState(false);
@@ -62,6 +62,11 @@ const styles = {
     padding: 10px;
     color: white;
     list-style-type: none;
+    outline: none;
+
+    &:focus {
+      box-shadow: 0px 0px 3px 1px ${colors.green};
+    }
 
     &:hover {
       cursor: pointer;
@@ -98,6 +103,7 @@ const styles = {
       border-top: transparent;
     }
 
+    &:focus,
     &:hover {
       color: ${colors.green};
     }

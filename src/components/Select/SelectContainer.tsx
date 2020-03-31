@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Select } from "./";
+import React, { useState, useEffect } from "react";
+import { SelectComponent } from "./";
 import styled from "styled-components";
 
 const StyledSelect = styled.select`
@@ -14,16 +14,17 @@ const StyledP = styled.p`
 `;
 
 export const SelectContainer = () => {
+  useEffect(() => {
+    document.title = "Accessible React | Select";
+  });
+
   const options = ["Option 1", "Option 2", "Option 3"];
   const [value, setSelect] = useState("");
 
   const handleSelect = (value: string, e?: any) => {
     if (e && e.which !== 13) {
-      console.log("should not Select");
       return;
     }
-
-    e && console.log(e.which);
     setSelect(value);
   };
 
@@ -37,10 +38,10 @@ export const SelectContainer = () => {
       </StyledSelect>
 
       <StyledP>Custom Select: </StyledP>
-      <Select
+      <SelectComponent
         options={options}
         value={value}
-        onChange={value => handleSelect(value)}
+        onChange={(value, e) => handleSelect(value, e)}
         placeholder="Select option"
       />
     </div>
