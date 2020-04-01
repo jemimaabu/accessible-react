@@ -6,8 +6,6 @@ export const spacing = {
 export const mobileWidth = "850px";
 
 export const colors = {
-  mainBg: "#202729",
-  black: "#000",
   green: "#4ba173",
   lightGreen: "#63d297",
   red: "#ff5252",

@@ -3,15 +3,15 @@ import { useState } from "react";
 import { css, jsx } from "@emotion/core";
 import { colors } from "../../styles";
 
-interface SelectProps {
+interface SelectProps extends React.HTMLAttributes<HTMLDivElement> {
   value: string;
   options: Array<string>;
-  onChange: (value: string, e?: any) => void;
+  handleSelect: (value: string, event?: any) => void;
   placeholder?: string;
 }
 
 export const SelectComponent = (props: SelectProps) => {
-  const { value, options, placeholder, onChange } = props;
+  const { value, options, placeholder, handleSelect, ...rest } = props;
 
   const [isActive, toggle] = useState(false);
   const toggleSelect = (e?: any) => {
@@ -29,6 +29,7 @@ export const SelectComponent = (props: SelectProps) => {
       onKeyDown={e => toggleSelect(e)}
       aria-expanded={isActive}
       css={[styles.select, isActive && styles.active]}
+      {...rest}
     >
       {value ? value : placeholder}
       <ul css={styles.options}>
@@ -40,11 +41,12 @@ export const SelectComponent = (props: SelectProps) => {
             tabIndex={isActive ? 0 : -1}
             role="option"
             aria-selected={value === option}
+            aria-hidden={!isActive}
             aria-posinset={i}
             aria-setsize={options.length}
             value={option}
-            onClick={() => onChange(option)}
-            onKeyDown={e => onChange(option, e)}
+            onClick={() => handleSelect(option)}
+            onKeyDown={e => handleSelect(option, e)}
           >
             {option}
           </li>
@@ -60,7 +62,7 @@ const styles = {
     border: 1px solid ${colors.grey};
     background-color: inherit;
     padding: 10px;
-    color: white;
+    color: inherit;
     list-style-type: none;
     outline: none;
 

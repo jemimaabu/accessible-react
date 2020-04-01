@@ -5,9 +5,6 @@ import { colors } from "../../styles";
 
 interface ITableProps {}
 
-export const Table = (props: ITableProps) => {
-  useEffect(() => {
-    document.title = "Accessible React | Table";
-  });
+export const TableComponent = (props: ITableProps) => {
   return <div>Table</div>;
 };

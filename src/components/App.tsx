@@ -1,17 +1,40 @@
 /** @jsx jsx */
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink, BrowserRouter as Router, Route } from "react-router-dom";
-import { SelectContainer, ButtonContainer, Table } from "../components";
-import styled, { createGlobalStyle } from "styled-components";
+import {
+  SelectContainer,
+  ButtonContainer,
+  TableContainer
+} from "../components";
+import styled, {
+  createGlobalStyle,
+  ThemeProvider,
+  withTheme
+} from "styled-components";
 import { css, jsx } from "@emotion/core";
 import { colors, spacing } from "../styles";
 
-const GlobalStyle = createGlobalStyle`
+type ITheme = {
+  bgColor: string;
+  color: string;
+};
+
+const lightTheme: ITheme = {
+  bgColor: "#eaeaea",
+  color: "#000"
+};
+
+const darkTheme: ITheme = {
+  bgColor: "#202729",
+  color: "#fff"
+};
+
+const GlobalStyle = createGlobalStyle<{ theme: ITheme }>`
   body {
     margin: 0;
     font-family: 'Lato', sans-serif;
-    background-color: ${colors.mainBg};
-    color: white;
+    background-color: ${({ theme }) => theme.bgColor};
+    color:  ${({ theme }) => theme.color};
     box-sizing: border-box;
   }
 `;
@@ -49,35 +72,79 @@ const StyledMain = styled.main`
   margin: ${spacing.large} auto;
 `;
 
-export const App: React.FC = () => {
+const StyledSpan = styled.span`
+  position: absolute;
+  left: 15px;
+`;
+
+const StyledToggle = styled.button`
+  border: none;
+  background-color: transparent;
+  color: inherit;
+  cursor: pointer;
+
+  &.active {
+    color: ${colors.green};
+  }
+`;
+
+function App() {
   useEffect(() => {
     document.title = "Accessible React";
   });
-  return (
-    <div css={styles.appPage}>
-      <GlobalStyle />
-      <h1>Accessible React</h1>
-      <Router>
-        <StyledNav>
-          <NavLink to="/button" activeClassName="active">
-            Button
-          </NavLink>
-          <NavLink to="/select" activeClassName="active">
-            Select
-          </NavLink>
-          <NavLink to="/table" activeClassName="active">
-            Table
-          </NavLink>
-        </StyledNav>
-        <StyledMain>
-          <Route path="/button" component={ButtonContainer} />
-          <Route path="/select" component={SelectContainer} />
-          <Route path="/table" component={Table} />
-        </StyledMain>
-      </Router>
-    </div>
+
+  const [colorScheme, setColorScheme] = useState(
+    localStorage.getItem("theme") ? localStorage.getItem("theme") : "dark"
   );
-};
+
+  const setTheme = (color: string) => {
+    setColorScheme(color);
+    localStorage.setItem("theme", color);
+  };
+  return (
+    <ThemeProvider theme={colorScheme === "dark" ? darkTheme : lightTheme}>
+      <div css={styles.appPage}>
+        <GlobalStyle />
+        <header>
+          <StyledSpan className="theme-toggle">
+            <StyledToggle
+              className={colorScheme === "dark" && "active"}
+              onClick={() => setTheme("dark")}
+            >
+              Dark
+            </StyledToggle>{" "}
+            /{" "}
+            <StyledToggle
+              className={colorScheme === "light" && "active"}
+              onClick={() => setTheme("light")}
+            >
+              Light
+            </StyledToggle>
+          </StyledSpan>
+          <h1>Accessible React</h1>
+        </header>
+        <Router>
+          <StyledNav>
+            <NavLink to="/button" activeClassName="active">
+              Button
+            </NavLink>
+            <NavLink to="/select" activeClassName="active">
+              Select
+            </NavLink>
+            <NavLink to="/table" activeClassName="active">
+              Table
+            </NavLink>
+          </StyledNav>
+          <StyledMain>
+            <Route path="/button" component={ButtonContainer} />
+            <Route path="/select" component={SelectContainer} />
+            <Route path="/table" component={TableContainer} />
+          </StyledMain>
+        </Router>
+      </div>
+    </ThemeProvider>
+  );
+}
 
 const styles = {
   appPage: css`
@@ -91,3 +158,5 @@ const styles = {
     }
   `
 };
+
+export default withTheme(App);

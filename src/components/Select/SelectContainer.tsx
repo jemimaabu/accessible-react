@@ -9,7 +9,8 @@ const StyledSelect = styled.select`
   margin: 0 0 15px;
 `;
 
-const StyledP = styled.p`
+const StyledLabel = styled.label`
+  display: inline-block;
   margin-bottom: 5px;
 `;
 
@@ -29,21 +30,22 @@ export const SelectContainer = () => {
   };
 
   return (
-    <div>
-      <StyledP>Native Select: </StyledP>
-      <StyledSelect placeholder="Select option">
+    <>
+      <StyledLabel htmlFor="native-select">Native Select: </StyledLabel>
+      <StyledSelect id="native-select" placeholder="Select option">
         <option>Option 1</option>
         <option>Option 2</option>
         <option>Option 3</option>
       </StyledSelect>
 
-      <StyledP>Custom Select: </StyledP>
+      <StyledLabel htmlFor="custom-select">Custom Select: </StyledLabel>
       <SelectComponent
+        placeholder="Select option"
         options={options}
         value={value}
-        onChange={(value, e) => handleSelect(value, e)}
-        placeholder="Select option"
+        handleSelect={(value, e) => handleSelect(value, e)}
+        id="custom-select"
       />
-    </div>
+    </>
   );
 };
