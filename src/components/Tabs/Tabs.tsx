@@ -65,18 +65,20 @@ const styles = {
     transition: 0.3s;
     position: relative;
     min-width: 75px;
+    outline: 0;
 
-    &:hover,
-    &:focus {
+    &:hover {
       background-color: #eaeaea;
     }
 
+    &:focus {
+      box-shadow: 0px 0px 4px 1px ${colors.green};
+    }
+
     &[aria-selected="true"] {
-      color: ${colors.green};
       font-weight: bold;
 
-      &:hover,
-      &:focus {
+      &:hover {
         background-color: white;
       }
 
