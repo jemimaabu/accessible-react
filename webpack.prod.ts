@@ -1,13 +1,19 @@
+import path from "path";
 import webpack from "webpack";
 import HtmlWebPackPlugin from "html-webpack-plugin";
 
 const htmlPlugin = new HtmlWebPackPlugin({
-  template: "./src/index.html"
+  template: "./src/index.html",
+  filename: "./index.html"
 });
 
 const config: webpack.Configuration = {
-  mode: "development",
+  mode: "production",
   entry: "./src/index.tsx",
+  output: {
+    path: path.resolve(__dirname, "dist"),
+    filename: "bundle.js"
+  },
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".json"]
   },

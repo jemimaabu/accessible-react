@@ -24,7 +24,7 @@ export const TableContainer = () => {
     caption {
       text-align: left;
       margin-bottom: 5px;
-      color: inherit;
+      color: ${({ theme }) => theme.color};
     }
   `;
 
@@ -32,14 +32,18 @@ export const TableContainer = () => {
     <>
       <StyledTable>
         <caption>Native Table:</caption>
-        <tr>
-          <th>Header 1</th>
-          <th>Header 2</th>
-        </tr>
-        <tr>
-          <td>Content 1</td>
-          <td>Content 2</td>
-        </tr>
+        <thead>
+          <tr>
+            <th>Header 1</th>
+            <th>Header 2</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Content 1</td>
+            <td>Content 2</td>
+          </tr>
+        </tbody>
       </StyledTable>
     </>
   );
