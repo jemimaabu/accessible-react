@@ -1,3 +1,3 @@
 export * from "./Select";
 export * from "./Button";
-export * from "./Table";
+export * from "./Tabs";

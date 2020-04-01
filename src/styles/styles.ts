@@ -12,3 +12,13 @@ export const colors = {
   yellow: "#999999",
   grey: "#999999"
 };
+
+export const lightTheme = {
+  bgColor: "#fff",
+  color: "#202729"
+};
+
+export const darkTheme = {
+  bgColor: "#202729",
+  color: "#fff"
+};

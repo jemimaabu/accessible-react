@@ -7,7 +7,7 @@ const htmlPlugin = new HtmlWebPackPlugin({
   filename: "./index.html"
 });
 
-const config: webpack.Configuration = {
+module.exports = {
   mode: "production",
   entry: "./src/index.tsx",
   output: {
@@ -17,11 +17,11 @@ const config: webpack.Configuration = {
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".json"]
   },
-
+  devServer: {
+    historyApiFallback: true
+  },
   module: {
     rules: [{ test: /\.tsx?$/, loader: "awesome-typescript-loader" }]
   },
   plugins: [htmlPlugin]
 };
-
-export default config;

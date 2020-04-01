@@ -1,35 +1,12 @@
 /** @jsx jsx */
 import React, { useEffect, useState } from "react";
 import { NavLink, BrowserRouter as Router, Route } from "react-router-dom";
-import {
-  SelectContainer,
-  ButtonContainer,
-  TableContainer
-} from "../components";
-import styled, {
-  createGlobalStyle,
-  ThemeProvider,
-  withTheme
-} from "styled-components";
+import { SelectContainer, ButtonContainer, TabsContainer } from "../components";
+import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
 import { css, jsx } from "@emotion/core";
-import { colors, spacing } from "../styles";
+import { spacing, colors, lightTheme, darkTheme } from "../styles";
 
-type ITheme = {
-  bgColor: string;
-  color: string;
-};
-
-const lightTheme: ITheme = {
-  bgColor: "#eaeaea",
-  color: "#000"
-};
-
-const darkTheme: ITheme = {
-  bgColor: "#202729",
-  color: "#fff"
-};
-
-const GlobalStyle = createGlobalStyle<{ theme: ITheme }>`
+const GlobalStyle = createGlobalStyle<{ theme: any }>`
   body {
     margin: 0;
     font-family: 'Lato', sans-serif;
@@ -88,7 +65,7 @@ const StyledToggle = styled.button`
   }
 `;
 
-function App() {
+export default function App() {
   useEffect(() => {
     document.title = "Accessible React";
   });
@@ -131,14 +108,15 @@ function App() {
             <NavLink to="/select" activeClassName="active">
               Select
             </NavLink>
-            <NavLink to="/table" activeClassName="active">
-              Table
+            <NavLink to="/tabs" activeClassName="active">
+              Tabs
             </NavLink>
           </StyledNav>
           <StyledMain>
+            <Route exact path="/" component={ButtonContainer} />
             <Route path="/button" component={ButtonContainer} />
             <Route path="/select" component={SelectContainer} />
-            <Route path="/table" component={TableContainer} />
+            <Route path="/tabs" component={TabsContainer} />
           </StyledMain>
         </Router>
       </div>
@@ -158,5 +136,3 @@ const styles = {
     }
   `
 };
-
-export default withTheme(App);
