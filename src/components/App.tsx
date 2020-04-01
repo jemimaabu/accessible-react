@@ -4,7 +4,7 @@ import { NavLink, BrowserRouter as Router, Route } from "react-router-dom";
 import { SelectContainer, ButtonContainer, TabsContainer } from "../components";
 import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
 import { css, jsx } from "@emotion/core";
-import { spacing, colors, lightTheme, darkTheme } from "../styles";
+import { spacing, colors, lightTheme, darkTheme, mobileWidth } from "../styles";
 
 const GlobalStyle = createGlobalStyle<{ theme: any }>`
   body {
@@ -47,11 +47,19 @@ const StyledMain = styled.main`
   width: 50%;
   max-width: 750px;
   margin: ${spacing.large} auto;
+
+  @media (max-width: ${mobileWidth}) {
+    width: 90%;
+  }
 `;
 
 const StyledSpan = styled.span`
   position: absolute;
   left: 15px;
+
+  @media (max-width: ${mobileWidth}) {
+    bottom: 15px;
+  }
 `;
 
 const StyledToggle = styled.button`
