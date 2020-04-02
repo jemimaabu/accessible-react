@@ -38,7 +38,16 @@ export const TabsContainer = () => {
               <br /> "Yes, sir."
               <br />
               "There's no need to call me "sir" Professor."
-              <br /> And then everybody was like "OH SNAAAPPPPP".`
+              <br /> And then everybody was like:
+              <br />
+              <iframe
+                src="https://giphy.com/embed/cF7QqO5DYdft6"
+                style={{ height: "150px", margin: "auto", display: "block" }}
+                frameBorder="0"
+                title="OHHHHHH"
+                className="giphy-embed"
+                allowFullScreen
+              ></iframe>
             </>
           )
         }

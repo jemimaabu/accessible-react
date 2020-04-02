@@ -19,7 +19,7 @@ export const SelectContainer = () => {
     document.title = "Accessible React | Select";
   });
 
-  const options = ["Option 1", "Option 2", "Option 3"];
+  const options = ["Pikachu", "Charmander", "Squirtle"];
   const [value, setSelect] = useState("");
 
   const handleSelect = (value: string, e?: any) => {
@@ -38,9 +38,12 @@ export const SelectContainer = () => {
         <option>Option 3</option>
       </StyledSelect>
 
-      <StyledLabel htmlFor="custom-select">Custom Select: </StyledLabel>
+      <StyledLabel htmlFor="custom-select" id="custom-label">
+        Custom Select:
+      </StyledLabel>
       <SelectComponent
-        placeholder="Select option"
+        aria-labelledby="custom-label"
+        placeholder="Favorite Pokemon"
         options={options}
         value={value}
         handleSelect={(value, e) => handleSelect(value, e)}
