@@ -76,7 +76,7 @@ const StyledToggle = styled.button`
 export default function App() {
   useEffect(() => {
     document.title = "Accessible React";
-  });
+  }, []);
 
   const [colorScheme, setColorScheme] = useState(
     localStorage.getItem("theme") ? localStorage.getItem("theme") : "dark"

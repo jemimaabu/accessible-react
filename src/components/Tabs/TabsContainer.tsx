@@ -10,8 +10,38 @@ export const TabsContainer = () => {
   return (
     <TabsComponent
       Tabs={[
-        { title: "Tab 1", content: "Content 1" },
-        { title: "Tab 2", content: "Content 2" }
+        {
+          title: "Dumbledore's Truth",
+          content: (
+            <q>
+              Of course it is happening inside your head, Harry, but why on
+              earth should that mean that it is not real?
+            </q>
+          )
+        },
+        {
+          title: "Harry's Obsession",
+          content: (
+            <q>
+              Harry, however, had never been less interested in Quidditch; he
+              was rapidly becoming obsessed with Draco Malfoy.
+            </q>
+          )
+        },
+        {
+          title: "Snape gets owned",
+          content: (
+            <>
+              "Do you remember me telling you we are practicing non-verbal
+              spells, Potter?"
+              <br /> "Yes," said Harry stiffly.
+              <br /> "Yes, sir."
+              <br />
+              "There's no need to call me "sir" Professor."
+              <br /> And then everybody was like "OH SNAAAPPPPP".`
+            </>
+          )
+        }
       ]}
     />
   );

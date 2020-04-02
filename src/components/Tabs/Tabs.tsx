@@ -5,7 +5,7 @@ import { colors } from "../../styles";
 
 type Tab = {
   title: string;
-  content: string;
+  content: React.ReactNode;
 };
 
 interface ITabsProps {
@@ -43,7 +43,7 @@ export const TabsComponent = (props: ITabsProps) => {
           tabIndex={activeTab === i ? 0 : -1}
           hidden={activeTab !== i}
         >
-          {tab.content}
+          <p>{tab.content}</p>
         </div>
       ))}
     </React.Fragment>
