@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { SelectComponent } from "./";
 import styled from "styled-components";
 
@@ -15,8 +15,11 @@ const StyledLabel = styled.label`
 `;
 
 export const SelectContainer = () => {
+  const selectFocus = useRef(null);
+
   useEffect(() => {
     document.title = "Accessible React | Select";
+    selectFocus.current.focus();
   });
 
   const options = ["Pikachu", "Charmander", "Squirtle"];
@@ -31,7 +34,9 @@ export const SelectContainer = () => {
 
   return (
     <>
-      <StyledLabel htmlFor="native-select">Native Select: </StyledLabel>
+      <StyledLabel htmlFor="native-select" ref={selectFocus}>
+        Native Select:
+      </StyledLabel>
       <StyledSelect id="native-select" placeholder="Select option">
         <option>Option 1</option>
         <option>Option 2</option>

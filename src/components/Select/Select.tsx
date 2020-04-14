@@ -26,7 +26,7 @@ export const SelectComponent = (props: SelectProps) => {
       tabIndex={0}
       role="listbox"
       onClick={() => toggleSelect()}
-      onKeyDown={e => toggleSelect(e)}
+      onKeyDown={(e) => toggleSelect(e)}
       aria-expanded={isActive}
       css={[styles.select, isActive && styles.active]}
       {...rest}
@@ -42,11 +42,11 @@ export const SelectComponent = (props: SelectProps) => {
             role="option"
             aria-selected={value === option}
             aria-hidden={!isActive}
-            aria-posinset={i}
+            aria-posinset={++i}
             aria-setsize={options.length}
             value={option}
             onClick={() => handleSelect(option)}
-            onKeyDown={e => handleSelect(option, e)}
+            onKeyDown={(e) => handleSelect(option, e)}
           >
             {option}
           </li>
@@ -133,5 +133,5 @@ const styles = {
     &:hover {
       color: ${colors.lightGreen};
     }
-  `
+  `,
 };
