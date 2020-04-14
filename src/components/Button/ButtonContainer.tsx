@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { ButtonComponent } from "./";
 import styled from "styled-components";
 
@@ -8,8 +8,11 @@ const StyledLabel = styled.label`
 `;
 
 export const ButtonContainer = () => {
+  const buttonFocus = useRef(null);
+
   useEffect(() => {
     document.title = "Accessible React | Button";
+    buttonFocus.current.focus();
   });
 
   let [nativeCount, setNative] = useState(0);
@@ -17,7 +20,7 @@ export const ButtonContainer = () => {
 
   return (
     <>
-      <StyledLabel htmlFor="native-button">
+      <StyledLabel htmlFor="native-button" ref={buttonFocus}>
         Native Button: {nativeCount}
       </StyledLabel>
       <button id="native-button" onClick={() => setNative(++nativeCount)}>
