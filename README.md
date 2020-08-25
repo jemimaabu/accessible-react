@@ -1,6 +1,6 @@
 # accessible-react
 
-A presentation on building accessible components in React
+A presentation on building accessible components in React.
 
 Demo: [accessible-react.netlify.app](https://accessible-react.netlify.app)
 
